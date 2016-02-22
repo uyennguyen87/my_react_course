@@ -4,39 +4,49 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      stateTxt: ' this is the state txt'
+      stateTxt: ' this is the state txt',
+      red: 0,
+      green: 0,
+      blue:0
     }
-    this.update = this.update.bind(this)
+    this.updateTxt = this.updateTxt.bind(this)
+    this.updateSlider = this.updateSlider.bind(this)
   }
 
-  update(e) {
-    this.setState({stateTxt: e.target.value})
+  updateSlider(e) {
+    this.setState({
+      red: ReactDOM.findDOMNode(this.refs.red.refs.inp).value,
+      green: ReactDOM.findDOMNode(this.refs.green.refs.inp).value,
+      blue: ReactDOM.findDOMNode(this.refs.blue.refs.inp).value
+    })
+  }
+
+  updateTxt(e) {
+    this.setState({
+      stateTxt: e.target.value
+    })
   }
 
   render() {
     let txt = this.props.txt
     return (
       <div>
-        <Widget stateTxt={this.state.stateTxt} update={this.update} />
-        <Widget stateTxt={this.state.stateTxt} update={this.update} />
-        <Widget stateTxt={this.state.stateTxt} update={this.update} />
+        <Slider ref="red" updateSlider={this.updateSlider}/>
+        {this.state.red}
+        <br />
+        <Slider ref="green" updateSlider={this.updateSlider}/>
+        {this.state.green}
+        <br />
+        <Slider ref="blue" updateSlider={this.updateSlider}/>
+        {this.state.blue}
+        <br />
+        <hr />
+        <Widget stateTxt={this.state.stateTxt} updateTxt={this.updateTxt} />
         <div>{txt}</div>
       </div>
     )
   }
 }
-
-const Widget = (props) => {
-  return (
-    <div>
-      <input type="text"
-        onChange={props.update} />
-      <h1>{props.stateTxt}</h1>
-    </div>
-  )
-}
-
-// const App = () => <h1>Hello Uyen</h1>
 
 App.propTypes = {
   txt: React.PropTypes.string,
@@ -46,6 +56,33 @@ App.propTypes = {
 App.defaultProps = {
   txt: 'this is the default txt'
 }
+
+class Slider extends React.Component {
+  render() {
+    return (
+      <div>
+        <input ref="inp" type="range"
+          min="0"
+          max="255"
+          onChange={this.props.updateSlider} />
+      </div>
+    )
+  }
+}
+
+const Widget = (props) => {
+  return (
+    <div>
+      <input type="text"
+        onChange={props.updateTxt} />
+      <h1>{props.stateTxt}</h1>
+    </div>
+  )
+}
+
+// const App = () => <h1>Hello Uyen</h1>
+
+
 
 ReactDOM.render(
   <App cat={5} />,
