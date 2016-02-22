@@ -16,9 +16,13 @@ npm install babel webpack webpack-dev-server -g
 
 If you have a permission issue with npm global install:
 > mkdir ~/.npm-global
+
 > npm config set prefix '~/.npm-global'
+
 > touch ~/.profile
+
 > export PATH=~/.npm-global/bin:$PATH
+
 > source ~/.profile
 
 
