@@ -8,9 +8,11 @@ class App extends React.Component {
       val: 0,
       red: 0,
       green: 0,
-      blue:0
+      blue:0,
+      increasing: false
     }
     this.update = this.update.bind(this)
+    this.updateVal2 = this.updateVal2.bind(this)
     this.updateTxt = this.updateTxt.bind(this)
     this.updateSlider = this.updateSlider.bind(this)
   }
@@ -29,6 +31,13 @@ class App extends React.Component {
     })
   }
 
+  updateVal2() {
+    ReactDOM.render(
+      <App cat={2} val2={this.props.val2+1} />,
+      document.getElementById("a")
+    );
+  }
+
   update() {
     this.setState({val: this.state.val + 1})
   }
@@ -43,6 +52,7 @@ class App extends React.Component {
     let txt = this.props.txt
     return (
       <div>
+        <button onClick={this.updateVal2}>{this.props.val2}</button>
         <Button> I <Heart/> React</Button> {this.state.val*this.state.m}
         <Slider ref="red" updateSlider={this.updateSlider}/>
         {this.state.red}
@@ -69,6 +79,22 @@ class App extends React.Component {
     console.log('bye');
     clearInterval(this.inc)
   }
+
+  componentWillReceiveProps(nextProps){
+    console.log('componentWillReceiveProps')
+    this.setState({increasing: nextProps.val2 > this.props.val2})
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate')
+    // return true;
+    return nextProps.val2 % 5 == 0;
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log('componentDidUpdate')
+    console.log('prevProps', prevProps)
+    console.log('prevState', prevState)}
 }
 
 App.propTypes = {
@@ -77,7 +103,8 @@ App.propTypes = {
 }
 
 App.defaultProps = {
-  txt: 'this is the default txt'
+  txt: 'this is the default txt',
+  val2: 0
 }
 
 
