@@ -31,6 +31,7 @@ class App extends React.Component {
     let txt = this.props.txt
     return (
       <div>
+        <Button> I <Heart/> React</Button>
         <Slider ref="red" updateSlider={this.updateSlider}/>
         {this.state.red}
         <br />
@@ -82,6 +83,13 @@ const Widget = (props) => {
 
 // const App = () => <h1>Hello Uyen</h1>
 
+class Button extends React.Component {
+  render() {
+    return <button>{this.props.children}</button>
+  }
+}
+
+const Heart = () => <span className="glyphicon glyphicon-heart"></span>
 
 
 ReactDOM.render(
