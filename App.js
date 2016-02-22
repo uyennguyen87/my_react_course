@@ -6,6 +6,7 @@ class App extends React.Component {
     this.state = {
       stateTxt: ' this is the state txt'
     }
+    this.update = this.update.bind(this)
   }
 
   update(e) {
@@ -16,13 +17,23 @@ class App extends React.Component {
     let txt = this.props.txt
     return (
       <div>
-        <input type="text"
-          onChange={this.update.bind(this)} />
-        <h1>{this.state.stateTxt}</h1>
+        <Widget stateTxt={this.state.stateTxt} update={this.update} />
+        <Widget stateTxt={this.state.stateTxt} update={this.update} />
+        <Widget stateTxt={this.state.stateTxt} update={this.update} />
         <div>{txt}</div>
       </div>
     )
   }
+}
+
+const Widget = (props) => {
+  return (
+    <div>
+      <input type="text"
+        onChange={props.update} />
+      <h1>{props.stateTxt}</h1>
+    </div>
+  )
 }
 
 // const App = () => <h1>Hello Uyen</h1>
