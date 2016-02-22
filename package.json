@@ -1,0 +1,23 @@
+{
+  "name": "my_react_course",
+  "version": "1.0.0",
+  "description": "## Development Environtment",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uyennguyen87/my_react_course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uyennguyen87/my_react_course/issues"
+  },
+  "homepage": "https://github.com/uyennguyen87/my_react_course#readme",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  }
+}
