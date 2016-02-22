@@ -1,9 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      stateTxt: ' this is the state txt'
+    }
+  }
+
+  update(e) {
+    this.setState({stateTxt: e.target.value})
+  }
+
   render() {
     let txt = this.props.txt
-    return <h1>{txt}</h1>
+    return (
+      <div>
+        <input type="text"
+          onChange={this.update.bind(this)} />
+        <h1>{this.state.stateTxt}</h1>
+        <div>{txt}</div>
+      </div>
+    )
   }
 }
 
