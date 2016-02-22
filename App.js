@@ -5,10 +5,12 @@ class App extends React.Component {
     super();
     this.state = {
       stateTxt: ' this is the state txt',
+      val: 0,
       red: 0,
       green: 0,
       blue:0
     }
+    this.update = this.update.bind(this)
     this.updateTxt = this.updateTxt.bind(this)
     this.updateSlider = this.updateSlider.bind(this)
   }
@@ -27,8 +29,13 @@ class App extends React.Component {
     })
   }
 
+  update() {
+    this.setState({val: this.state.val + 1})
+  }
+
   componentWillMount() {
     console.log("mounting");
+    this.setState({m:2})
   }
 
   render() {
@@ -36,7 +43,7 @@ class App extends React.Component {
     let txt = this.props.txt
     return (
       <div>
-        <Button> I <Heart/> React</Button>
+        <Button> I <Heart/> React</Button> {this.state.val*this.state.m}
         <Slider ref="red" updateSlider={this.updateSlider}/>
         {this.state.red}
         <br />
@@ -55,10 +62,12 @@ class App extends React.Component {
 
   componentDidMount(){
     console.log("mounted")
+    this.inc = setInterval(this.update, 500)
   }
 
   componentWillUnmount() {
     console.log('bye');
+    clearInterval(this.inc)
   }
 }
 
