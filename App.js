@@ -27,7 +27,12 @@ class App extends React.Component {
     })
   }
 
+  componentWillMount() {
+    console.log("mounting");
+  }
+
   render() {
+    console.log('rendering!');
     let txt = this.props.txt
     return (
       <div>
@@ -47,6 +52,14 @@ class App extends React.Component {
       </div>
     )
   }
+
+  componentDidMount(){
+    console.log("mounted")
+  }
+
+  componentWillUnmount() {
+    console.log('bye');
+  }
 }
 
 App.propTypes = {
@@ -57,6 +70,8 @@ App.propTypes = {
 App.defaultProps = {
   txt: 'this is the default txt'
 }
+
+
 
 class Slider extends React.Component {
   render() {
@@ -91,8 +106,40 @@ class Button extends React.Component {
 
 const Heart = () => <span className="glyphicon glyphicon-heart"></span>
 
+class Wrapper extends React.Component {
+  constructor(){
+    super();
+  }
+
+  mount() {
+    ReactDOM.render(
+      <App cat={5} />,
+       document.getElementById('a')
+    );
+  }
+
+  unmount(){
+    ReactDOM.unmountComponentAtNode(document.getElementById('a'))
+  }
+
+  render(){
+    return (
+      <div>
+        <button onClick={this.mount.bind(this)}>Mount</button>
+        <button onClick={this.unmount.bind(this)}>Unmount</button>
+        <div id="a"></div>
+      </div>
+    )
+  }
+}
+
+
+// ReactDOM.render(
+//   <App cat={5} />,
+//   document.getElementById('app')
+// );
 
 ReactDOM.render(
-  <App cat={5} />,
-  document.getElementById('app')
+  <Wrapper/>,
+  document.getElementById("app")
 );
