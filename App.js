@@ -4,6 +4,7 @@ import LifeCycle from './components/LifeCycle'
 import ChildrentRender from './components/ChildrentRender'
 import Refs from './components/Refs'
 import MixinComponent from './components/MixinComponent'
+import ComposableComponent from './components/ComposableComponent'
 
 class App extends React.Component {
   constructor(){
@@ -12,6 +13,7 @@ class App extends React.Component {
     this.renderChildrentRender = this.renderChildrentRender.bind(this)
     this.renderRefs = this.renderRefs.bind(this)
     this.renderMixinComponent = this.renderMixinComponent.bind(this)
+    this.renderComposableComponent = this.renderComposableComponent.bind(this)
     this.destroyDOMNode = this.destroyDOMNode.bind(this)
   }
 
@@ -43,6 +45,13 @@ class App extends React.Component {
     )
   }
 
+  renderComposableComponent(){
+    ReactDOM.render(
+      <ComposableComponent />,
+      document.getElementById('a')
+    )
+  }
+
   destroyDOMNode(){
     ReactDOM.unmountComponentAtNode(document.getElementById('a'))
   }
@@ -57,6 +66,7 @@ class App extends React.Component {
           <li><button onClick={this.renderChildrentRender}>Render "ChildrentRender"</button></li>
           <li><button onClick={this.renderRefs}>Render "Refs"</button></li>
           <li><button onClick={this.renderMixinComponent}>Render "MixinComponent"</button></li>
+          <li><button onClick={this.renderComposableComponent}>Render "ComposableComponent"</button></li>
           <br />
           <li><button onClick={this.destroyDOMNode}>Destroy DOM Node</button></li>
         </ul>
