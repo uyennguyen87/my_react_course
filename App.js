@@ -5,6 +5,7 @@ import ChildrentRender from './components/ChildrentRender'
 import Refs from './components/Refs'
 import MixinComponent from './components/MixinComponent'
 import ComposableComponent from './components/ComposableComponent'
+import DynamicallyGeneratedComponents from './components/DynamicallyGeneratedComponents'
 
 class App extends React.Component {
   constructor(){
@@ -14,6 +15,7 @@ class App extends React.Component {
     this.renderRefs = this.renderRefs.bind(this)
     this.renderMixinComponent = this.renderMixinComponent.bind(this)
     this.renderComposableComponent = this.renderComposableComponent.bind(this)
+    this.renderDynamicallyGeneratedComponents = this.renderDynamicallyGeneratedComponents.bind(this)
     this.destroyDOMNode = this.destroyDOMNode.bind(this)
   }
 
@@ -52,6 +54,13 @@ class App extends React.Component {
     )
   }
 
+  renderDynamicallyGeneratedComponents(){
+    ReactDOM.render(
+      <DynamicallyGeneratedComponents />,
+      document.getElementById('a')
+    )
+  }
+
   destroyDOMNode(){
     ReactDOM.unmountComponentAtNode(document.getElementById('a'))
   }
@@ -67,6 +76,7 @@ class App extends React.Component {
           <li><button onClick={this.renderRefs}>Render "Refs"</button></li>
           <li><button onClick={this.renderMixinComponent}>Render "MixinComponent"</button></li>
           <li><button onClick={this.renderComposableComponent}>Render "ComposableComponent"</button></li>
+          <li><button onClick={this.renderDynamicallyGeneratedComponents}>Render "DynamicallyGenereatedComponents"</button></li>
           <br />
           <li><button onClick={this.destroyDOMNode}>Destroy DOM Node</button></li>
         </ul>
