@@ -25,4 +25,13 @@ If you have a permission issue with npm global install:
 
 > source ~/.profile
 
+to run app, on command line:
+> npm start
+
+if webpack-dev-server cannot start correctly, let:
+> npm install babel webpack webpack-dev-server  (remove -g)
+> then, run:
+> npm start again
+
+
 
