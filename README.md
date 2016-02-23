@@ -76,3 +76,5 @@ and config in webpack:
 >
 > }
 >
+
+![](http://i.imgur.com/oYTmDXF.png)
