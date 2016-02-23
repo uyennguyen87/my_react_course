@@ -34,4 +34,28 @@ if webpack-dev-server cannot start correctly, let:
 > npm start again
 
 
+### for load style
 
+npm install --save-dev node-sass sass-loader css-loader style-loader  extract-text-webpack-plugin
+
+and config in webpack:
+
+> var ExtractTextPlugin = require('extract-text-webpack-plugin');
+>
+> module.exports = {
+>     // ...
+>     module: {
+>         loaders: [
+>             // ...
+>             {
+>                 test: /\.scss$/,
+>                 loader: ExtractTextPlugin.extract('css!sass')
+>             }
+>         ]
+>     },
+>     plugins: [
+>         new ExtractTextPlugin('public/style.css', {
+>             allChunks: true
+>         })
+>     ]
+> }
