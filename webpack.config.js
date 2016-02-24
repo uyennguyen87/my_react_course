@@ -24,13 +24,18 @@ module.exports = {
         test: /\.scss$/,
         include: './styles',
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+      },
+      {
+        test: /\.css$/,
+        include: './styles',
+        loader: ['style', 'css']
       }
     ]
   },
-  plugins: [
+  // plugins: [
        // new ExtractTextPlugin('app.css', {
        //     allChunks: true
        // })
-    new ExtractTextPlugin('app.css')
-  ]
+  //   new ExtractTextPlugin('app.css')
+  // ]
 }
