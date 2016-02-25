@@ -2,9 +2,10 @@
   "name": "my_react_course",
   "version": "1.0.0",
   "description": "## Development Environtment",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "build": "webpack",
+    "dev": "webpack-dev-server --port 3333 --debug --devtool eval --progress --colors --hot --content-base build"
   },
   "repository": {
     "type": "git",
@@ -16,15 +17,21 @@
     "url": "https://github.com/uyennguyen87/my_react_course/issues"
   },
   "homepage": "https://github.com/uyennguyen87/my_react_course#readme",
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "node-sass": "3.4.2",
+    "path": "0.12.7",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
   "dependencies": {
-    "jquery": "^2.2.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
-  },
-  "devDependencies": {
-    "css-loader": "^0.23.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0"
   }
 }

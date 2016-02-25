@@ -1,5 +1,4 @@
 import React from 'react'
-import $ from 'jquery'
 
 class JSXLiveCompiler extends React.Component {
   constructor(){

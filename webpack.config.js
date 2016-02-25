@@ -1,41 +1,22 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 module.exports = {
-  entry: './main.js',
+  entry: path.resolve(__dirname, './main.js'),
   output: {
-    path: './',
-    filename: 'index.js'
-  },
-  devServer: {
-    inline: true,
-    port:3333
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react']
-        }
+    loaders: [{
+        test: /\.jsx?$/,
+        loader: 'babel'
       },
+      // SASS
       {
         test: /\.scss$/,
-        include: './styles',
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
-      },
-      {
-        test: /\.css$/,
-        include: './styles',
-        loader: ['style', 'css']
+        loader: 'style!css!sass'
       }
     ]
-  },
-  // plugins: [
-       // new ExtractTextPlugin('app.css', {
-       //     allChunks: true
-       // })
-  //   new ExtractTextPlugin('app.css')
-  // ]
-}
+  }
+};

@@ -8,6 +8,8 @@ import ComposableComponent from './components/ComposableComponent'
 import DynamicallyGeneratedComponents from './components/DynamicallyGeneratedComponents'
 import JSXLiveCompiler from './components/JSXLiveCompiler'
 
+import './styles/app.scss'
+
 class App extends React.Component {
   constructor(){
     super();
